@@ -11,6 +11,11 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -30,98 +35,90 @@ object Form1: TForm1
       Caption = 'Tela Base'
     end
     object ToolBar1: TToolBar
-      Left = 565
+      Left = 616
       Top = 0
-      Width = 233
+      Width = 182
       Height = 25
       Align = alRight
       Images = ImageList1
       TabOrder = 0
-      ExplicitLeft = 568
-      ExplicitHeight = 33
-      object ToolButton1: TToolButton
+      object btNovo: TToolButton
         Left = 0
         Top = 0
-        Caption = 'ToolButton1'
+        Caption = 'btNovo'
         ImageIndex = 0
+        OnClick = btNovoClick
       end
-      object ToolButton2: TToolButton
+      object btEditar: TToolButton
         Left = 23
         Top = 0
-        Caption = 'ToolButton2'
-        ImageIndex = 1
+        Caption = 'btEditar'
+        ImageIndex = 2
+        OnClick = btEditarClick
       end
-      object ToolButton3: TToolButton
+      object btSalvar: TToolButton
         Left = 46
         Top = 0
-        Caption = 'ToolButton3'
-        ImageIndex = 2
+        Caption = 'btSalvar'
+        ImageIndex = 1
+        OnClick = btSalvarClick
       end
-      object ToolButton4: TToolButton
+      object btCancelar: TToolButton
         Left = 69
         Top = 0
-        Caption = 'ToolButton4'
-        ImageIndex = 3
+        Caption = 'btCancelar'
+        ImageIndex = 4
+        OnClick = btCancelarClick
       end
-      object ToolButton5: TToolButton
+      object btExcluir: TToolButton
         Left = 92
         Top = 0
-        Caption = 'ToolButton5'
-        ImageIndex = 4
+        Caption = 'btExcluir'
+        ImageIndex = 3
+        OnClick = btExcluirClick
       end
-      object ToolButton6: TToolButton
+      object btPrint: TToolButton
         Left = 115
         Top = 0
-        Caption = 'ToolButton6'
-        ImageIndex = 5
+        Caption = 'btPrint'
+        ImageIndex = 7
+        OnClick = btPrintClick
       end
-      object ToolButton7: TToolButton
+      object btBuscar: TToolButton
         Left = 138
         Top = 0
-        Caption = 'ToolButton7'
-        ImageIndex = 6
+        Caption = 'btBuscar'
+        ImageIndex = 9
+        OnClick = btBuscarClick
       end
-      object ToolButton8: TToolButton
+      object btSair: TToolButton
         Left = 161
         Top = 0
-        Caption = 'ToolButton8'
-        ImageIndex = 7
-      end
-      object ToolButton9: TToolButton
-        Left = 184
-        Top = 0
-        Caption = 'ToolButton9'
+        Caption = 'btSair'
         ImageIndex = 8
-      end
-      object ToolButton10: TToolButton
-        Left = 207
-        Top = 0
-        Caption = 'ToolButton10'
-        ImageIndex = 9
       end
     end
   end
-  object GroupBox1: TGroupBox
+  object GroupCabecalho: TGroupBox
     Left = 0
     Top = 25
     Width = 798
     Height = 82
     Align = alTop
     TabOrder = 1
-    ExplicitLeft = -8
-    ExplicitTop = 48
+    ExplicitTop = 19
   end
-  object PageControl1: TPageControl
+  object pageControl: TPageControl
     Left = 0
     Top = 107
     Width = 798
     Height = 214
-    ActivePage = TabSheet2
+    ActivePage = tbInformacoes
     Align = alTop
     TabOrder = 2
-    object TabSheet1: TTabSheet
+    object tbInformacoes: TTabSheet
       Caption = 'Informa'#231#245'es'
-      object GroupBox3: TGroupBox
+      object GroupInformacoes: TGroupBox
         Left = 0
         Top = 0
         Width = 790
@@ -134,11 +131,11 @@ object Form1: TForm1
         ExplicitHeight = 105
       end
     end
-    object TabSheet2: TTabSheet
+    object tbFiltros: TTabSheet
       Caption = 'Filtros Para Pesquisa'
       ImageIndex = 1
       ExplicitLeft = 5
-      object GroupBox2: TGroupBox
+      object GroupFiltros: TGroupBox
         Left = 0
         Top = 0
         Width = 790
@@ -147,7 +144,7 @@ object Form1: TForm1
         TabOrder = 0
         ExplicitTop = -7
       end
-      object DBGrid1: TDBGrid
+      object gridFiltros: TDBGrid
         Left = 0
         Top = 77
         Width = 790
@@ -173,8 +170,8 @@ object Form1: TForm1
     end
   end
   object ImageList1: TImageList
-    Left = 568
-    Top = 104
+    Left = 480
+    Top = 48
     Bitmap = {
       494C01010A001800040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
@@ -581,7 +578,7 @@ object Form1: TForm1
   end
   object DataSource1: TDataSource
     OnStateChange = DataSource1StateChange
-    Left = 624
-    Top = 104
+    Left = 544
+    Top = 48
   end
 end
