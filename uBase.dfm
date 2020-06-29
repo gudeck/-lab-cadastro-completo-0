@@ -1,7 +1,7 @@
-object Form1: TForm1
+object FormBase: TFormBase
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  Caption = 'FormBase'
   ClientHeight = 319
   ClientWidth = 798
   Color = clBtnFace
@@ -26,7 +26,6 @@ object Form1: TForm1
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 801
     object Label1: TLabel
       Left = 10
       Top = 10
@@ -106,7 +105,6 @@ object Form1: TForm1
     Height = 82
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 19
   end
   object pageControl: TPageControl
     Left = 0
@@ -125,16 +123,15 @@ object Form1: TForm1
         Height = 186
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 8
-        ExplicitTop = 8
-        ExplicitWidth = 185
-        ExplicitHeight = 105
       end
     end
     object tbFiltros: TTabSheet
       Caption = 'Filtros Para Pesquisa'
       ImageIndex = 1
       ExplicitLeft = 5
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupFiltros: TGroupBox
         Left = 0
         Top = 0

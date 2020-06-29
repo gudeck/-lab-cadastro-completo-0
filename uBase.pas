@@ -1,4 +1,4 @@
-unit Unit1;
+unit uBase;
 
 interface
 
@@ -10,7 +10,7 @@ uses
   Vcl.DBGrids, dbctrls;
 
 type
-  TForm1 = class(TForm)
+  TFormBase = class(TForm)
     Panel1: TPanel;
     Label1: TLabel;
     ImageList1: TImageList;
@@ -52,13 +52,13 @@ type
   end;
 
 var
-  Form1: TForm1;
+  FormBase: TFormBase;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm1.btBuscarClick(Sender: TObject);
+procedure TFormBase.btBuscarClick(Sender: TObject);
 begin
   ActiveControl := nil;
 
@@ -73,7 +73,7 @@ begin
   StatusBar1.Panels[1].Text := IntToStr(DataSource1.DataSet.RecordCount);
 end;
 
-procedure TForm1.btCancelarClick(Sender: TObject);
+procedure TFormBase.btCancelarClick(Sender: TObject);
 begin
   ActiveControl := nil;
 
@@ -84,7 +84,7 @@ begin
 
 end;
 
-procedure TForm1.btEditarClick(Sender: TObject);
+procedure TFormBase.btEditarClick(Sender: TObject);
 begin
   if DataSource1.DataSet.Active then
   begin
@@ -98,7 +98,7 @@ begin
   end;
 end;
 
-procedure TForm1.btExcluirClick(Sender: TObject);
+procedure TFormBase.btExcluirClick(Sender: TObject);
 begin
   if DataSource1.DataSet.Active then
   begin
@@ -115,7 +115,7 @@ begin
 
 end;
 
-procedure TForm1.btNovoClick(Sender: TObject);
+procedure TFormBase.btNovoClick(Sender: TObject);
 begin
   if ActiveControl = gridFiltros then
     ActiveControl := nil;
@@ -128,7 +128,7 @@ begin
 
 end;
 
-procedure TForm1.btPrintClick(Sender: TObject);
+procedure TFormBase.btPrintClick(Sender: TObject);
 begin
   if (DataSource1.DataSet.IsEmpty) or not(DataSource1.DataSet.Active) then
   begin
@@ -138,7 +138,7 @@ begin
 
 end;
 
-procedure TForm1.btSalvarClick(Sender: TObject);
+procedure TFormBase.btSalvarClick(Sender: TObject);
 begin
   ActiveControl := nil;
   DataSource1.DataSet.Post;
@@ -146,7 +146,7 @@ begin
   btBuscarClick(btBuscar);
 end;
 
-procedure TForm1.DataSource1StateChange(Sender: TObject);
+procedure TFormBase.DataSource1StateChange(Sender: TObject);
 begin
   tbFiltros.TabVisible := DataSource1.DataSet.State in [dsBrowse, dsInactive];
   GroupInformacoes.Enabled := DataSource1.DataSet.State in dsEditModes;
@@ -165,14 +165,14 @@ begin
 
 end;
 
-procedure TForm1.FormClose(Sender: TObject; var Action: TCloseAction);
+procedure TFormBase.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   DataSource1.DataSet.Close;
   Action := caFree;
   TForm(Sender) := nil;
 end;
 
-procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+procedure TFormBase.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if DataSource1.State in dsEditModes then
     if Application.MessageBox('Deseja gravar as alterações?',
@@ -183,12 +183,12 @@ begin
 
 end;
 
-procedure TForm1.FormCreate(Sender: TObject);
+procedure TFormBase.FormCreate(Sender: TObject);
 begin
   TForm(Sender) := self;
 end;
 
-procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word;
+procedure TFormBase.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   if (Key = VK_RETURN) and not(ActiveControl is TDBGrid) and
@@ -197,7 +197,7 @@ begin
     perform(WM_NEXTDLGCTL, 0, 0);
 end;
 
-procedure TForm1.FormShow(Sender: TObject);
+procedure TFormBase.FormShow(Sender: TObject);
 begin
   DataSource1StateChange(DataSource1);
   pageControl.ActivePage := tbFiltros;
